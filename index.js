@@ -1,5 +1,5 @@
 const app = require('express')();
-app.get('/', (req, res) => {
+app.get('/api/results', (req, res) => {
 	var _whole_results = {};
 	var urls = {
 		polling_centre: "assets/resources/polling-centres/",
