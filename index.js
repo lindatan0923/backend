@@ -11,19 +11,19 @@ app.options('*', cors());
 app.get('/api/results', (req, res) => {
 	var _whole_results = {};
 	var urls = {
-		polling_centre: "assets/resources/polling-centres/",
-		president: "assets/results/all-president-election-results/",
-		parliament: "assets/results/all-parliamentary-election-results/",
-		mayor: "assets/results/all-mayor-election-results/",
-		chairperson: "assets/results/all-chairperson-election-results/",
-		villageheadman: "assets/results/all-village-headman-election-results/",
-		councilor: "assets/results/all-councillor-election-results/",
-		president_2018: "assets/resnpm init -yults/all-president-polling-centre-results-2018/",
-		president_2023: "assets/results/all-president-election-results-2023/",
-		parliament_2018: "assets/results/all-parliamentary-polling-centre-results-2018/",
-		mayor_2018: "assets/results/all-mayor-chair-polling-centre-results-2018/",
-		councilor_2018: "assets/results/all-councillor-polling-centre-results-2018/",
-		villageheadman_2018: "assets/results/all-villageheadman-polling-centre-results-2018/",
+		polling_centre: "./assets/resources/polling-centres/",
+		president: "./assets/results/all-president-election-results/",
+		parliament: "./assets/results/all-parliamentary-election-results/",
+		mayor: "./assets/results/all-mayor-election-results/",
+		chairperson: "./assets/results/all-chairperson-election-results/",
+		villageheadman: "./assets/results/all-village-headman-election-results/",
+		councilor: "./assets/results/all-councillor-election-results/",
+		president_2018: "./assets/resnpm init -yults/all-president-polling-centre-results-2018/",
+		president_2023: "./assets/results/all-president-election-results-2023/",
+		parliament_2018: "./assets/results/all-parliamentary-polling-centre-results-2018/",
+		mayor_2018: "./assets/results/all-mayor-chair-polling-centre-results-2018/",
+		councilor_2018: "./assets/results/all-councillor-polling-centre-results-2018/",
+		villageheadman_2018: "./assets/results/all-villageheadman-polling-centre-results-2018/",
 	}
 
 	res.header("Access-Control-Allow-Origin", "*");
