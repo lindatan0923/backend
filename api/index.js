@@ -1,26 +1,3 @@
-var express = require('express'),
-cors = require('cors'),
-fs = require('fs'),
-async = require('async'),
-zlib = require('zlib'),
-// imagemin = require('imagemin'),
-// imageminJpegtran = require('imagemin-jpegtran'),
-// imageminPngquant = require('imagemin-pngquant'),
-httpsRedirect = require('express-https-redirect'),
-app = express();
-app.use('/', httpsRedirect());
-app.use(cors());
-app.options('*', cors());
-
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-});
-
-app.use(express.static('build'));
-
 var urls = {
 	polling_centre: "assets/resources/polling-centres/",
 	president: "assets/results/all-president-election-results/",
@@ -37,9 +14,16 @@ var urls = {
     villageheadman_2018: "assets/results/all-villageheadman-polling-centre-results-2018/",
 }
 
-var _whole_results = {};
+const app = require('express')();
+app.use(express.static('assets'))
 
-app.get('/election_results', function(req, res, next) {
+app.get('/api/election_results', (req, res) => {
+	var _whole_results = {};
+
+	res.setHeader("Access-Control-Allow-Origin", "*");
+	res.setHeader('Access-Control-Allow-Methods', 'DELETE, PUT');
+	res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
 	async.forEachOf(urls, function(url, key, callback) {
 		fs.readdir(url, function(err, names) {
 			async.map(names, function(name, callback) {
@@ -65,9 +49,6 @@ app.get('/election_results', function(req, res, next) {
 			res.end(result);
 		})
 	})
-})
-
-app.set('port', process.env.PORT || 5000);
-app.listen(app.get('port'), function () {
-	console.log('Express server listening on port ' + app.get('port'));
 });
+
+module.exports = app;
