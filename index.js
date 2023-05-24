@@ -39,6 +39,7 @@ app.get('/api/results', (req, res) => {
 		fs.readdir(url, function(err, names) {
 			async.map(names, function(name, callback) {
 				fs.readFile(url + name, 'utf8', function(err, contents) {
+					console.log(contents)
 					callback(null, contents == "" ? [] : JSON.parse(contents));
 				});
 			}, function(err, results) {
