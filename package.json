@@ -1,0 +1,29 @@
+{
+  "name": "sloedp-v01",
+  "version": "0.0.1",
+  "private": true,
+  "author": "TpISENT (SL) Limited",
+  "homepage": "https://tpisent.com/",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "express-https-redirect": "^1.0.0",
+    "express-static-gzip": "^0.3.2",
+    "fs": "0.0.1-security"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "devDependencies": {
+    "@types/async": "^3.2.18"
+  },
+  "description": "Sierra Leone Open Election Data Platform Results Mobile App. The app visualizes election results on a map"
+}
