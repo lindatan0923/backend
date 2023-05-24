@@ -15,7 +15,7 @@ var urls = {
 }
 
 const app = require('express')();
-app.get('/api/election_results', (req, res) => {
+app.get('/', (req, res) => {
 	var _whole_results = {};
 
 	res.setHeader("Access-Control-Allow-Origin", "*");
