@@ -8,12 +8,12 @@ const app = require('express')();
 app.use(cors());
 app.options('*', cors());
 
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	next();
-});
+// app.use(function(req, res, next) {
+// 	res.header("Access-Control-Allow-Origin", "*");
+// 	res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
+// 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+// 	next();
+// });
 
 app.use(express.static('assets'));
 
@@ -34,6 +34,10 @@ app.get('/api/results', (req, res) => {
 		councilor_2018: "./assets/results/all-councillor-polling-centre-results-2018/",
 		villageheadman_2018: "./assets/results/all-villageheadman-polling-centre-results-2018/",
 	}
+
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
 	async.forEachOf(urls, function(url, key, callback) {
 		fs.readdir(url, function(err, names) {
