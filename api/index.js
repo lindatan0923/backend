@@ -15,8 +15,6 @@ var urls = {
 }
 
 const app = require('express')();
-app.use(express.static('assets'))
-
 app.get('/api/election_results', (req, res) => {
 	var _whole_results = {};
 
