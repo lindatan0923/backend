@@ -1,4 +1,13 @@
+var cors = require('cors'),
+fs = require('fs'),
+async = require('async'),
+zlib = require('zlib');
+
 const app = require('express')();
+
+app.use(cors());
+app.options('*', cors());
+
 app.get('/api/results', (req, res) => {
 	var _whole_results = {};
 	var urls = {
