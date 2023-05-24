@@ -1,26 +1,25 @@
-var urls = {
-	polling_centre: "assets/resources/polling-centres/",
-	president: "assets/results/all-president-election-results/",
-    parliament: "assets/results/all-parliamentary-election-results/",
-    mayor: "assets/results/all-mayor-election-results/",
-    chairperson: "assets/results/all-chairperson-election-results/",
-    villageheadman: "assets/results/all-village-headman-election-results/",
-    councilor: "assets/results/all-councillor-election-results/",
-    president_2018: "assets/results/all-president-polling-centre-results-2018/",
-	president_2023: "assets/results/all-president-election-results-2023/",
-    parliament_2018: "assets/results/all-parliamentary-polling-centre-results-2018/",
-    mayor_2018: "assets/results/all-mayor-chair-polling-centre-results-2018/",
-    councilor_2018: "assets/results/all-councillor-polling-centre-results-2018/",
-    villageheadman_2018: "assets/results/all-villageheadman-polling-centre-results-2018/",
-}
-
 const app = require('express')();
 app.get('/', (req, res) => {
 	var _whole_results = {};
+	var urls = {
+		polling_centre: "assets/resources/polling-centres/",
+		president: "assets/results/all-president-election-results/",
+		parliament: "assets/results/all-parliamentary-election-results/",
+		mayor: "assets/results/all-mayor-election-results/",
+		chairperson: "assets/results/all-chairperson-election-results/",
+		villageheadman: "assets/results/all-village-headman-election-results/",
+		councilor: "assets/results/all-councillor-election-results/",
+		president_2018: "assets/results/all-president-polling-centre-results-2018/",
+		president_2023: "assets/results/all-president-election-results-2023/",
+		parliament_2018: "assets/results/all-parliamentary-polling-centre-results-2018/",
+		mayor_2018: "assets/results/all-mayor-chair-polling-centre-results-2018/",
+		councilor_2018: "assets/results/all-councillor-polling-centre-results-2018/",
+		villageheadman_2018: "assets/results/all-villageheadman-polling-centre-results-2018/",
+	}
 
-	res.setHeader("Access-Control-Allow-Origin", "*");
-	res.setHeader('Access-Control-Allow-Methods', 'DELETE, PUT');
-	res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header('Access-Control-Allow-Methods', 'DELETE, PUT');
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
 	async.forEachOf(urls, function(url, key, callback) {
 		fs.readdir(url, function(err, names) {
