@@ -2,8 +2,8 @@ var cors = require('cors'),
 fs = require('fs'),
 async = require('async'),
 zlib = require('zlib');
-
-const app = require('express')();
+var express = require('express');
+const app = express();
 
 app.use(cors());
 app.options('*', cors());
@@ -14,6 +14,8 @@ app.use(function(req, res, next) {
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	next();
 });
+
+app.use(express.static('build'));
 
 app.get('/api/results', (req, res) => {
 	var _whole_results = {};
